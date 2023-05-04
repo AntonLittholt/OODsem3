@@ -78,11 +78,15 @@ public class Sale {
             int quantity = item.getQuantity();
             int vat = item.getItemVat();
             int price = item.getItemPrice();
-            totalPrice += quantity*price*(1+vat/100);
+            totalPrice += totalPriceForItem(quantity, price, vat);
 
         }
         this.runningTotal = totalPrice;  
         return totalPrice;
+    }
+
+    private int totalPriceForItem(int quantity, int price, int vat){
+        return quantity*price*(1+vat/100);
     }
     /**
      * Calculates change and generates a receipt. Also logs the sale and uppdates inventory.

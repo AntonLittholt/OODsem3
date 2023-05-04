@@ -28,11 +28,18 @@ public class InventorySystem {
 
     public ItemDTO fetchItemInfo(int itemID){
         for (int i = 0; i < itemDTOs.size(); i++) {
-            if(itemID == itemDTOs.get(i).getItemID()){  //fixa
+            if(isItemFound(itemID, i)){  //fixa
                 return itemDTOs.get(i);
             }
         }
         return null;
+    }
+
+    private boolean isItemFound(int itemID, int index){
+        if(itemID == itemDTOs.get(index).getItemID()){
+            return true;
+        }
+        return false;
     }
 
     /**
